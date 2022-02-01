@@ -3,10 +3,10 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ListView
-import android.widget.Toast
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.*
+import androidx.core.widget.addTextChangedListener
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -17,9 +17,13 @@ class MainActivity : AppCompatActivity() {
 
     private var btnGetValute:Button? = null
     private var values: ListView? = null
+    private var currentValuteEditText:EditText? = null
+    private var currentValuteEditRub:EditText? = null
+
+    private var first = true
 
 
-    var valuteText = "Выбрать"
+    private var valuteText = "Выбрать"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
         btnGetValute = findViewById(R.id.get_valute)
         values = findViewById(R.id.values)
+        currentValuteEditText = findViewById(R.id.current_valute_edit)
+        currentValuteEditRub = findViewById(R.id.current_valute_edit_rub)
 
         if (intent.hasExtra(EXTRA_VALUE)) {
             val idValute = intent.getLongExtra(EXTRA_VALUE, -1).toInt()
@@ -52,11 +58,42 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
         initializing()
         btnGetValute?.setOnClickListener {
             val intent = Intent(this, List::class.java)
             startActivity(intent)
         }
+
+        currentValuteEditText?.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (id != -1) {
+                    val value = s.toString().toDouble() * List.value[id]
+                    currentValuteEditRub?.setText(value.toString())
+                }
+            }
+        })
+//        currentValuteEditRub?.addTextChangedListener(object : TextWatcher {
+//            override fun afterTextChanged(s: Editable) {
+//            }
+//
+//            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+//            }
+//
+//            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+//                if (id != -1) {
+//                    val value = currentValuteEditText?.text
+//                        .toString().toInt() / List.value[id]
+//                    currentValuteEditRub?.setText(value.toString())
+//                }
+//            }
+//        })
 
     }
     private fun initializing() {
