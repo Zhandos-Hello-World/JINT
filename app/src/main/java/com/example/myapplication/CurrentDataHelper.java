@@ -6,13 +6,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 public class CurrentDataHelper extends SQLiteOpenHelper {
-    public static String TABLE_NAME = "CURRENT";
+    public static String DB_NAME = "CURRENT";
     public static int VERSION = 1;
 
-    public CurrentDataHelper(Context context, String name,
-                             SQLiteDatabase.CursorFactory factory,
-                             int version) {
-        super(context, name, factory, version);
+    public CurrentDataHelper(Context context) {
+        super(context, DB_NAME, null, VERSION);
     }
 
     @Override
@@ -27,26 +25,23 @@ public class CurrentDataHelper extends SQLiteOpenHelper {
 
     private void onUpdate(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 1) {
+
             db.execSQL("CREATE TABLE DATA (" +
                     "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "id TEXT," +
-                    "numcode TEXT, " +
+                    "numCode TEXT, " +
                     "charCode TEXT, " +
                     "nominal INTEGER," +
                     "name TEXT," +
-                    "value NUMERIC," +
-                    "previous NUMERIC);");
-        }
-        else if (oldVersion < 2){
-            db.execSQL("CREATE TABLE CHOICED_DATA (" +
+                    "value REAL," +
+                    "previous REAL);");
+
+            db.execSQL("CREATE TABLE CHOICE_DATA (" +
                     "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "id TEXT," +
-                    "numcode TEXT, " +
-                    "charCode TEXT, " +
-                    "nominal INTEGER," +
-                    "name TEXT," +
-                    "value NUMERIC," +
-                    "previous NUMERIC);");
+                    "id TEXT);");
+
+            db.execSQL("CREATE TABLE TIME(_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "date TEXT);");
         }
     }
 }
