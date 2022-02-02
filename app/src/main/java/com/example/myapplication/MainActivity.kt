@@ -62,10 +62,10 @@ class MainActivity : AppCompatActivity() {
                 if (first && DataManager.haveID(id)) {
                     var str = s.toString()
                     if (str.isNotEmpty()) {
-                        if (str[0] == ',') {
+                        if (str[0] == '.') {
                             str = "0$str"
                         }
-                        if (str[str.length - 1] == ',') {
+                        if (str[str.length - 1] == '.') {
                             str += "0"
                         }
                         val value = str.toDouble() * DataManager.value[id]
@@ -88,10 +88,10 @@ class MainActivity : AppCompatActivity() {
                 if (!first && DataManager.haveID(id)) {
                     var str = s.toString()
                     if (str.isNotEmpty()) {
-                        if (str[0] == ',') {
+                        if (str[0] == '.') {
                             str = "0$str"
                         }
-                        if (str[str.length - 1] == ',') {
+                        if (str[str.length - 1] == '.') {
                             str += "0"
                         }
                         val value = str.toDouble() / DataManager.value[id]

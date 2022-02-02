@@ -30,6 +30,8 @@ class ListActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.tool_bar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setIcon(R.drawable.picture1)
+
 
         listView = findViewById(R.id.list)
 
