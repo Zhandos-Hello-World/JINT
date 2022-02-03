@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                             str += "0"
                         }
                         val value = str.toDouble() * DataManager.value[id]
-                        currentValuteEditRub?.setText(value.toString())
+                        currentValuteEditRub?.setText(String.format("%.3f", value))
                     }
                     else {
                         currentValuteEditRub?.setText("")
@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
                             str += "0"
                         }
                         val value = str.toDouble() / DataManager.value[id]
-                        currentValuteEditText?.setText(value.toString())
+                        currentValuteEditText?.setText(String.format("%.3f", value))
                     }
                     else {
                         currentValuteEditText?.setText("")
