@@ -17,7 +17,7 @@ import org.json.JSONException
 class ListActivity : AppCompatActivity() {
     companion object {
         private const val url = "https://www.cbr-xml-daily.ru/daily_json.js"
-        private var TitleTime = "Последний синхронизаций: "
+        private var TitleTime = "Последняя синхронизация: "
         private var currentTime = "отсутствует"
     }
 
