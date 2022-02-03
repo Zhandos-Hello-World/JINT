@@ -46,10 +46,13 @@ class ListActivity : AppCompatActivity() {
             request()
         }
         else {
-            listView?.adapter = ArrayAdapter(this,
-                android.R.layout.simple_expandable_list_item_1,
-                android.R.id.text1,
-                DataManager.name)
+            val list = Array(DataManager.name.size)
+            {"[${DataManager.charCode[it]}]  ${DataManager.name[it]}"}
+
+            val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,
+            android.R.id.text1, list)
+
+            listView?.adapter = adapter
         }
         currentTime = DataManager.getTime(this)
 

@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                 "Выбрать"
             }
         }
+        initializing()
         btnGetValute?.text = valuteText
         btnGetValute?.setOnClickListener {
             startActivity(Intent(this, ListActivity::class.java))
@@ -103,5 +104,21 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+    private fun initializing() {
+        if (DataManager.haveID(id)) {
+            val list = mutableListOf<String>()
+            list.add("ID: ${DataManager.id[id]}")
+            list.add("Num code: ${DataManager.numCode[id]}")
+            list.add("Char code: ${DataManager.charCode[id]}")
+            list.add("Name: ${DataManager.name[id]}")
+            list.add("Value: ${DataManager.value[id]}")
+            list.add("Previous: ${DataManager.previous[id]}")
+
+            val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,
+                android.R.id.text1, list)
+
+            values?.adapter = adapter
+        }
     }
 }
