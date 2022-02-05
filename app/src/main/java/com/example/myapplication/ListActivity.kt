@@ -106,10 +106,12 @@ class ListActivity : AppCompatActivity() {
                         DataManager.previous.add(tempJSON.getDouble("Previous") /
                                 DataManager.nominal.last())
                     }
+                    val list = Array(DataManager.name.size)
+                    {"[${DataManager.charCode[it]}]  ${DataManager.name[it]}"}
                     listView?.adapter = ArrayAdapter(this,
                         android.R.layout.simple_expandable_list_item_1,
                         android.R.id.text1,
-                        DataManager.name)
+                        list)
 
                     DataManager.save(this)
                 } catch (ex: JSONException) {
