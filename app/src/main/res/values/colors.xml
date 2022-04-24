@@ -7,11 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="strokeColor">#F0EFEF</color>
-    <color name="textDescriptionColorWhite">#E3E3E3</color>
-    <color name="textHintWhite">#BAB9B9</color>
-    <color name="subTitle">#6C6C6C</color>
-    <color name="calculatorCardViewColorWhite">#2196F3</color>
-    <color name="titleCardViewWhite">#A4FFC4</color>
-    <color name="red">#E41D30</color>
+    <color name="gray">#E6E2E2</color>
+    <color name="blue">#2196F3</color>
+    <color name="green">#2A9F40</color>
 </resources>

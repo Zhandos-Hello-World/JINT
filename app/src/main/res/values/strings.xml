@@ -9,4 +9,8 @@
     <string name="name">Название: %s</string>
     <string name="charCode">CharCode: %s</string>
     <string name="id">ID: %s</string>
+    <string name="currency_converter">Currency\n converter</string>
+    <string name="from">From</string>
+    <string name="convert">Convert</string>
+    <string name="to">To</string>
 </resources>
