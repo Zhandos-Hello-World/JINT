@@ -4,4 +4,9 @@
     <string name="russian_ruble">Russian Ruble</string>
     <string name="ac">AC</string>
     <string name="cancel">Отмена</string>
+    <string name="title">1 %s = %2$.2f RUB</string>
+    <string name="subtitle">%2$.2f RUB = 1 %s</string>
+    <string name="name">Название: %s</string>
+    <string name="charCode">CharCode: %s</string>
+    <string name="id">ID: %s</string>
 </resources>
