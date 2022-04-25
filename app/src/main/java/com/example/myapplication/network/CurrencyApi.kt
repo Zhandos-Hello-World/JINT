@@ -17,7 +17,7 @@ object CurrencyApi {
         .baseUrl(BASE_URL)
         .build()
 
-    val retrofitService : CurrencyApiHolder by lazy {
+    val retrofitService: CurrencyApiHolder by lazy {
         retrofit.create(CurrencyApiHolder::class.java)
     }
 }

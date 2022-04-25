@@ -1,64 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="viewModel"
-            type="com.example.myapplication.currency.CurrencyViewModel"
-            />
+            type="com.example.myapplication.currency.CurrencyViewModel" />
     </data>
 
     <LinearLayout
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="16dp">
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/bigshot_one"
             android:text="@string/currency_converter"
             android:textColor="@color/green"
-            android:fontFamily="@font/bigshot_one"
             android:textSize="36sp" />
 
         <TextView
             android:id="@+id/from"
-            android:text="@string/from"
-
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/currency1"
-            android:layout_width="match_parent"
-            android:text="@{viewModel.currency1.charCode}"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-            />
+            android:text="@string/from" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select">
+
+            <AutoCompleteTextView
+                android:id="@+id/currency1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:text="@={viewModel.currency1}"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/to"
-            android:text="@string/to"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/currency2"
-            android:text="@{viewModel.currency2.charCode}"
+            android:text="@string/to" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-            />
+            android:hint="Select">
+
+            <AutoCompleteTextView
+                android:id="@+id/currency2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:text="@={viewModel.currency2}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/currency_1_name"
-            android:text="@{viewModel.currency1.charCode}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:text="@{viewModel.currency1}" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textField"
@@ -66,39 +80,39 @@
             android:layout_height="wrap_content"
 
             app:boxCornerRadiusTopEnd="16dp"
-            app:boxCornerRadiusTopStart="16dp"
-            >
+            app:boxCornerRadiusTopStart="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#F0EEEE"
                 android:inputType="numberDecimal"
-                android:background="#F0EEEE"/>
+                android:text="@={viewModel.userInput}"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/convert_btn"
-            android:text="@string/convert"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.convert()}"
+            android:text="@string/convert" />
 
         <TextView
             android:id="@+id/currency_2_name"
-            android:text="@{viewModel.currency2.charCode}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:text="@{viewModel.currency2}" />
 
         <TextView
             android:id="@+id/result"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:textSize="26sp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:background="@drawable/shape"
-            />
+            android:text="@{viewModel.converted}"
+            android:textSize="26sp" />
     </LinearLayout>
 </layout>
