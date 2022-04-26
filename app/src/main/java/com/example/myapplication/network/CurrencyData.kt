@@ -3,7 +3,7 @@ package com.example.myapplication.network
 import com.squareup.moshi.Json
 
 
-class ResponseData {
+class CurrencyData {
     @Json(name = "disclaimer")
     val disclaimer: String = ""
     @Json(name = "date")
